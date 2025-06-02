@@ -26,13 +26,14 @@ const start = async () => {
   markerDimensions.forEach((_, index) => mindarThree.addAnchor(index));
 
   mindarThree.anchors.forEach(anchor => {
-    const idx     = anchor.targetIndex,
-          [w, h]  = markerDimensions[anchor.targetIndex];
+    const idx         = anchor.targetIndex,
+          [w, h]      = markerDimensions[anchor.targetIndex],
+          scale_ratio = 1.0;
     
     console.log(anchor, w, h, `0x${color_set[idx].toString(16)}`);
 
     const plane = new THREE.Mesh(
-      new THREE.PlaneGeometry(1, h / w),
+      new THREE.PlaneGeometry(scale_ratio, (h / w) * scale_ratio),
       new THREE.MeshBasicMaterial({ color: color_set[idx] })
     );
     anchor.group.add(plane);

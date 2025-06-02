@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import fs from 'node:fs';
 
 export default defineConfig({
+	base: "./",
 	server: {
 		https: {
 			cert: fs.readFileSync('./localhost+3.pem'),
